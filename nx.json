@@ -1,32 +1,67 @@
 {
-  "npmScope": "msx-player",
-  "affected": { "defaultBase": "master" },
-  "implicitDependencies": {
-    "angular.json": "*",
-    "package.json": { "dependencies": "*", "devDependencies": "*" },
-    "tsconfig.base.json": "*",
-    "tslint.json": "*",
-    ".eslintrc.json": "*",
-    "nx.json": "*"
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
-    }
-  },
-  "projects": {
-    "msx-player-web": { "tags": [] },
-    "msx-player-web-e2e": {
-      "tags": [],
-      "implicitDependencies": ["msx-player-web"]
-    },
-    "msx-player-msx": { "tags": [] },
-    "msx-player-msx-e2e": {
-      "tags": [],
-      "implicitDependencies": ["msx-player-msx"]
-    },
-    "msx-player-backend": { "tags": [] },
-    "msx-player-lib": { "tags": [] }
-  }
+	"npmScope": "msx-player",
+	"affected": {
+		"defaultBase": "master"
+	},
+	"implicitDependencies": {
+		"angular.json": "*",
+		"package.json": {
+			"dependencies": "*",
+			"devDependencies": "*"
+		},
+		"tsconfig.base.json": "*",
+		"tslint.json": "*",
+		".eslintrc.json": "*",
+		"nx.json": "*"
+	},
+	"tasksRunnerOptions": {
+		"default": {
+			"runner": "@nrwl/workspace/tasks-runners/default",
+			"options": {
+				"cacheableOperations": [
+					"build",
+					"lint",
+					"test",
+					"e2e"
+				]
+			}
+		}
+	},
+	"projects": {
+		"msx-player-web": {
+			"tags": [],
+			"implicitDependencies": [
+				"msx-player-lib"
+			]
+		},
+		"msx-player-web-e2e": {
+			"tags": [],
+			"implicitDependencies": [
+				"msx-player-web",
+				"msx-player-lib"
+			]
+		},
+		"msx-player-msx": {
+			"tags": [],
+			"implicitDependencies": [
+				"msx-player-lib"
+			]
+		},
+		"msx-player-msx-e2e": {
+			"tags": [],
+			"implicitDependencies": [
+				"msx-player-msx",
+				"msx-player-lib"
+			]
+		},
+		"msx-player-backend": {
+			"tags": [],
+			"implicitDependencies": [
+				"msx-player-lib"
+			]
+		},
+		"msx-player-lib": {
+			"tags": []
+		}
+	}
 }

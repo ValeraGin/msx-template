@@ -162,6 +162,7 @@
             "polyfills": "apps/msx-player-msx/src/polyfills.ts",
             "tsConfig": "apps/msx-player-msx/tsconfig.app.json",
             "assets": [
+			  "apps/msx-player-msx/src/start.json",
               "apps/msx-player-msx/src/favicon.ico",
               "apps/msx-player-msx/src/assets"
             ],
@@ -194,9 +195,10 @@
           }
         },
         "serve": {
-          "builder": "@nrwl/web:dev-server",
+		  "builder": "@nrwl/web:dev-server",
           "options": {
-            "buildTarget": "msx-player-msx:build"
+			"port": 4201,
+			"buildTarget": "msx-player-msx:build"
           },
           "configurations": {
             "production": {
