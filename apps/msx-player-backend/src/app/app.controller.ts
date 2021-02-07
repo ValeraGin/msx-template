@@ -4,10 +4,12 @@ import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
+
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getData() {
-    return this.appService.getData();
+  @Get('api/cat')
+  async getCatUrl() {
+    return this.appService.getCat();
   }
+
 }

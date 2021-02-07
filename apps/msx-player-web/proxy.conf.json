@@ -3,6 +3,10 @@
     "target": "http://localhost:3333",
     "secure": false
   },
+  "/msx/start.json": {
+    "target": "http://localhost:3333/",
+    "secure": false
+  },
   "/msx": {
     "target": "http://localhost:4201/",
     "secure": false

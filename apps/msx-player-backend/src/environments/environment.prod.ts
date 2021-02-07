@@ -1,3 +1,5 @@
+// todo: replace {{SERVER}} to your production address
 export const environment = {
-  production: true,
+  frontendUrl: 'http://{SERVER}',
+  production: true
 };

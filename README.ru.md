@@ -2,7 +2,7 @@
 
 🚀 **version 0.0.1**
 
-🌏 [Русский](README.ru.md)
+🌏 [English](README.md)
 
 This project was created as a template for a complete application for Media Station X.
 

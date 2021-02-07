@@ -1,8 +1,14 @@
 import { Injectable } from '@nestjs/common';
+import fetch from 'node-fetch';
 
 @Injectable()
 export class AppService {
-  getData(): { message: string } {
-    return { message: 'Welcome to msx-player-backend!' };
+
+  async getCat(): Promise<string> {
+    const url = 'https://aws.random.cat/meow';
+    const response = await fetch(url);
+    const catResponse = await response.json() as { file: string };
+    return catResponse.file;
   }
+
 }
