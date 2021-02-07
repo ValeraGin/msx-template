@@ -87,7 +87,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "msx-player-web:build"
+            "browserTarget": "msx-player-web:build",
+            "proxyConfig": "apps/msx-player-web/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -142,6 +143,156 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/msx-player-web-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "msx-player-msx": {
+      "root": "apps/msx-player-msx",
+      "sourceRoot": "apps/msx-player-msx/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/msx-player-msx",
+            "index": "apps/msx-player-msx/src/index.html",
+            "main": "apps/msx-player-msx/src/main.ts",
+            "polyfills": "apps/msx-player-msx/src/polyfills.ts",
+            "tsConfig": "apps/msx-player-msx/tsconfig.app.json",
+            "assets": [
+              "apps/msx-player-msx/src/favicon.ico",
+              "apps/msx-player-msx/src/assets"
+            ],
+            "styles": ["apps/msx-player-msx/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/msx-player-msx/src/environments/environment.ts",
+                  "with": "apps/msx-player-msx/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "msx-player-msx:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "msx-player-msx:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/msx-player-msx/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/msx-player-msx"],
+          "options": {
+            "jestConfig": "apps/msx-player-msx/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "msx-player-msx-e2e": {
+      "root": "apps/msx-player-msx-e2e",
+      "sourceRoot": "apps/msx-player-msx-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/msx-player-msx-e2e/cypress.json",
+            "tsConfig": "apps/msx-player-msx-e2e/tsconfig.e2e.json",
+            "devServerTarget": "msx-player-msx:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "msx-player-msx:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/msx-player-msx-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "msx-player-backend": {
+      "root": "apps/msx-player-backend",
+      "sourceRoot": "apps/msx-player-backend/src",
+      "projectType": "application",
+      "prefix": "msx-player-backend",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/msx-player-backend",
+            "main": "apps/msx-player-backend/src/main.ts",
+            "tsConfig": "apps/msx-player-backend/tsconfig.app.json",
+            "assets": ["apps/msx-player-backend/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/msx-player-backend/src/environments/environment.ts",
+                  "with": "apps/msx-player-backend/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "msx-player-backend:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/msx-player-backend/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/msx-player-backend"],
+          "options": {
+            "jestConfig": "apps/msx-player-backend/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
