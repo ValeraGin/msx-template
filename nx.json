@@ -1,0 +1,25 @@
+{
+  "npmScope": "msx-player",
+  "affected": { "defaultBase": "master" },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
+    }
+  },
+  "projects": {
+    "msx-player-web": { "tags": [] },
+    "msx-player-web-e2e": {
+      "tags": [],
+      "implicitDependencies": ["msx-player-web"]
+    }
+  }
+}

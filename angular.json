@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "msx-player-web",
+  "projects": {
+    "msx-player-web": {
+      "projectType": "application",
+      "root": "apps/msx-player-web",
+      "sourceRoot": "apps/msx-player-web/src",
+      "prefix": "msx-player",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/msx-player-web",
+            "index": "apps/msx-player-web/src/index.html",
+            "main": "apps/msx-player-web/src/main.ts",
+            "polyfills": "apps/msx-player-web/src/polyfills.ts",
+            "tsConfig": "apps/msx-player-web/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/msx-player-web/src/favicon.ico",
+              "apps/msx-player-web/src/assets"
+            ],
+            "styles": ["apps/msx-player-web/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/msx-player-web/src/environments/environment.ts",
+                  "with": "apps/msx-player-web/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "msx-player-web:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "msx-player-web:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "msx-player-web:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/msx-player-web/src/**/*.ts",
+              "apps/msx-player-web/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/msx-player-web"],
+          "options": {
+            "jestConfig": "apps/msx-player-web/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "msx-player-web-e2e": {
+      "root": "apps/msx-player-web-e2e",
+      "sourceRoot": "apps/msx-player-web-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/msx-player-web-e2e/cypress.json",
+            "tsConfig": "apps/msx-player-web-e2e/tsconfig.e2e.json",
+            "devServerTarget": "msx-player-web:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "msx-player-web:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/msx-player-web-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  }
+}
