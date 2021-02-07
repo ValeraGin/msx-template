@@ -26,6 +26,7 @@
       "tags": [],
       "implicitDependencies": ["msx-player-msx"]
     },
-    "msx-player-backend": { "tags": [] }
+    "msx-player-backend": { "tags": [] },
+    "msx-player-lib": { "tags": [] }
   }
 }

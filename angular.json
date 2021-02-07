@@ -296,6 +296,27 @@
           }
         }
       }
+    },
+    "msx-player-lib": {
+      "root": "libs/msx-player-lib",
+      "sourceRoot": "libs/msx-player-lib/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/msx-player-lib/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/msx-player-lib"],
+          "options": {
+            "jestConfig": "libs/msx-player-lib/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
