@@ -6,6 +6,8 @@
 
 This project was created as a template for a complete application for Media Station X.
 
+This template shows how to organize the API and serve up your content in Media Station X. Also, a template for your site has been added right away. This template can be used for websites with their own movies.
+
 ## Install
 
 ```bash
