@@ -41,19 +41,6 @@
 				"msx-player-lib"
 			]
 		},
-		"msx-player-msx": {
-			"tags": [],
-			"implicitDependencies": [
-				"msx-player-lib"
-			]
-		},
-		"msx-player-msx-e2e": {
-			"tags": [],
-			"implicitDependencies": [
-				"msx-player-msx",
-				"msx-player-lib"
-			]
-		},
 		"msx-player-backend": {
 			"tags": [],
 			"implicitDependencies": [

@@ -1,14 +1,25 @@
 import { Injectable } from '@nestjs/common';
+import { createApi } from 'unsplash-js';
+import { environment } from '../environments/environment';
+
+// @ts-ignore
 import fetch from 'node-fetch';
+// @ts-ignore
+global.fetch = fetch;
 
 @Injectable()
 export class AppService {
 
-  async getCat(): Promise<string> {
-    const url = 'https://aws.random.cat/meow';
-    const response = await fetch(url);
-    const catResponse = await response.json() as { file: string };
-    return catResponse.file;
+  private unsplash = createApi({ accessKey: environment.unsplash.accessKey });
+
+  async getPhotos(query: string) {
+    const response = (await this.unsplash.search.getPhotos({ query: query }))?.response;
+    return response?.results?.map(result => {
+      return {
+        label: result?.description || query,
+        image: result?.urls?.small
+      };
+    });
   }
 
 }
