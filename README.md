@@ -23,11 +23,15 @@ I personally recommend to use either [VSCode](https://code.visualstudio.com/) or
 To start the server, you need to run these commands in different terminals  
 Run `npm run start-backend` for a backend-dev server.  
 Run `npm run start-web` for a dev web-server.  
-Run `npm run start-msx` for a dev msx-server.  
+Run `npm run start-plugins` for a dev msx-server.  
 
 http://localhost:4200/ - Angular (frontend web app)  
-http://localhost:4200/msx - Media Station X (frontend msx app)  
 http://localhost:4200/api - NestJS (backend app)  
+http://localhost:1234/ - Media Station X Plugins/Data (MSX Scripts)  
+
+Test:
+- 1 way: open msx.benzac.de and enter "localhost:4200"
+- 2 way: open link http://msx.benzac.de/?start=menu:request:interaction:init@http://localhost:1234/index.html
 
 ## Build
 
