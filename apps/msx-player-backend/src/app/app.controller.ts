@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 
 import { AppService } from './app.service';
 
@@ -7,9 +7,9 @@ export class AppController {
 
   constructor(private readonly appService: AppService) {}
 
-  @Get('api/cat')
-  async getCatUrl() {
-    return this.appService.getCat();
+  @Get('api/get-photos')
+  async getCatUrl(@Query('query') query) {
+    return this.appService.getPhotos(query);
   }
 
 }
