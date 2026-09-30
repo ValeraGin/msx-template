@@ -1,7 +1,7 @@
 {
 	"name": "msx-player",
 	"version": "0.0.0",
-	"license": "unlicense",
+	"license": "MIT",
 	"author": {
 		"name": "Ignatkovich Valery",
 		"email": "valeragin@gmail.com",
