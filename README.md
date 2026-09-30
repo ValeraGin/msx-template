@@ -58,3 +58,10 @@ Run `nx dep-graph` to see a diagram of the dependencies of your projects.
 ## Further help
 
 Visit the [MSX Documentation](https://msx.benzac.de/wiki/index.php) [Nx Documentation](https://nx.dev/angular), [Angular Documentation](https://angular.io/), [NestJS](https://nestjs.com/) to learn more.
+
+## License
+
+[MIT](LICENSE), except the bundled TVX Plugin files in
+`apps/msx-player-plugins/src/scripts/lib/` — those are the work of
+[Benjamin Zachey](https://github.com/benzac-de), the author of
+[Media Station X](https://msx.benzac.de).
